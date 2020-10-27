@@ -31,9 +31,18 @@ Route::get('/order', 'OrderController@viewDataAll')->name('order');
 
 // view order instance
 Route::get('/order/{key}', 'OrderController@edit')->name('edit');
+// paginator
+Route::get('/order/&page={page}', 'OrderController@customPaginator')->name('customPaginator');
 
 // edit order instance
 Route::get('/order/{key}/edit', 'OrderController@editOrder')->name('editOrder');
 
 // redirects
 Route::redirect('/order/order', '/order');
+
+//test
+Route::get('/test', 'OrderController@customPaginator')->name('customPaginator');
+Route::get('/pagin', 'OrderController@showAllOrdersPaginator')->name('pagin');
+
+
+
