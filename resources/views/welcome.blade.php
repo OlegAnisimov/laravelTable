@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titleBlock')  Страница приветстия @endsection
+@section('titleBlock')  Привет @endsection
 @section('content')
 
 @endsection
