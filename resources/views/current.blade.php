@@ -1,33 +1,34 @@
 @extends('layouts.app')
-@section('titleBlock')   Orders @endsection
+@section('titleBlock')    @endsection
 @section('content')
-    <h1 class="h1">Orders </h1>
-    <a href="" class="a"> просроченные </a>
-    <a href="" class="a"> текущие </a>
-    <a href="" class="a"> новые </a>
-    <a href="" class="a"> выполненные </a>
-    {{ $pag->links() }}
+    <?php date_default_timezone_set('Europe/Moscow'); ?>
+    <h1 class="h1" >  Список заказов </h1>
+
+
+    <a href="{{ 'overdue' }}" class="a"> просроченные </a>
+    <a href="{{ 'current' }}" class="a"> текущие </a>
+    <a href="{{ 'new' }}" class="a"> новые </a>
+    <a href="{{ 'ready' }}" class="a"> выполненные </a>
     <table class="table">
         <thead>
         <tr>
-            <th>#</th>
+            <th>#Id</th>
             <th>Статус</th>
             <th>Название клиента</th>
             <th>Состав заказа (название, кол-во товаров)</th>
             <th>Cost</th>
         </tr>
         </thead>
-        @foreach($pag as $key => $value)
+        @foreach($items as $key => $value)
             <?php
             $totalCost = 0;
             ?>
             <tbody>
             <tr> <td >
-                    <a class="active" href="{{'/order/'.$key}}"> {{$pag[$key][0]->id}} </a>
-
+                    <a class="active" href="{{'/orders/'.$items[$key][0]->id}}"> {{$items[$key][0]->id}} </a>
                 </td>
-                <td>{{$pag[$key][0]->status}}</td>
-                <td>{{$pag[$key][0]->partner}}</td>
+                <td>{{$items[$key][0]->status}}</td>
+                <td>{{$items[$key][0]->partner}}</td>
                 <td>
 
                     @foreach($value as $index => $val)
@@ -35,7 +36,6 @@
                             <tbody>
                             <td>{{$val->productName}}</td>
                             <td>{{$val->quantity}}</td>
-                                                        <td>{{$val->quantity*$val->price}}</td>
                             </tbody>
                         </table>
                     @endforeach

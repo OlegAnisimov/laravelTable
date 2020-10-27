@@ -16,33 +16,24 @@ Route::get('/', function () {
 });
 
 Route::view('/', 'welcome')->name('welcome');
-Route::redirect('/welcome', '/');
+//Route::redirect('/welcome', '/');
 Route::view('/about', 'about')->name('about');
 //weather
-Route::view('/weather', 'weather')->name('weather');
+//Route::view('/weather', 'weather')->name('weather');
 Route::get('/weather', 'WeatherController@showWeather')->name('weather');
 
-//contacts delete
-Route::view('/contacts', 'contacts')->name('contacts');
-Route::post('/contacts/submit', 'ContactsController@submit')->name('contactForm') ;
-
-// view order list
-Route::get('/order', 'OrderController@viewDataAll')->name('order');
-
 // view order instance
-Route::get('/order/{key}', 'OrderController@edit')->name('edit');
-// paginator
-Route::get('/order/&page={page}', 'OrderController@customPaginator')->name('customPaginator');
+Route::get('/orders/{key}', 'OrderController@seeOrder')->name('seeOrder');
 
 // edit order instance
-Route::get('/order/{key}/edit', 'OrderController@editOrder')->name('editOrder');
+Route::get('/orders/{key}/edit', 'OrderController@editOrder')->name('editOrder');
 
-// redirects
-Route::redirect('/order/order', '/order');
+//orders with paginator
+Route::get('/orders', 'OrderController@showAllOrdersPaginator')->name('orders');
 
-//test
-Route::get('/test', 'OrderController@customPaginator')->name('customPaginator');
-Route::get('/pagin', 'OrderController@showAllOrdersPaginator')->name('pagin');
-
-
+// conditions views with paginator
+Route::get('/overdue', 'OrderController@overdue')->name('overdue');
+Route::get('/current', 'OrderController@current')->name('current');
+Route::get('/new', 'OrderController@new_orders')->name('new_orders');
+Route::get('/ready', 'OrderController@ready')->name('ready');
 

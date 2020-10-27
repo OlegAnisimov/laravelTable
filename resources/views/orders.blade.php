@@ -1,16 +1,17 @@
 @extends('layouts.app')
 @section('titleBlock')    @endsection
 @section('content')
-<h1 class="h1">Orders </h1>
-<a href="" class="a"> просроченные </a>
-<a href="" class="a"> текущие </a>
-<a href="" class="a"> новые </a>
-<a href="" class="a"> выполненные </a>
+    <?php date_default_timezone_set('Europe/Moscow'); ?>
+<h1 class="h1">Список заказов </h1>
+<a href="{{ 'overdue' }}" class="a"> просроченные </a>
+<a href="{{ 'current' }}" class="a"> текущие </a>
+<a href="{{ 'new' }}" class="a"> новые </a>
+<a href="{{ 'ready' }}" class="a"> выполненные </a>
 {{ $items->links() }}
 <table class="table">
     <thead>
     <tr>
-        <th>#</th>
+        <th>#Id</th>
         <th>Статус</th>
         <th>Название клиента</th>
         <th>Состав заказа (название, кол-во товаров)</th>
@@ -23,8 +24,7 @@
         ?>
         <tbody>
         <tr> <td >
-                <a class="active" href="{{'/order/'.$key}}"> {{$items[$key][0]->id}} </a>
-
+                <a class="active" href="{{'/orders/'.$items[$key][0]->id}}"> {{$items[$key][0]->id}} </a>
             </td>
             <td>{{$items[$key][0]->status}}</td>
             <td>{{$items[$key][0]->partner}}</td>
