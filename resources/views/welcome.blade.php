@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titleBlock')  Main page @endsection
+@section('titleBlock')  Страница приветстия @endsection
 @section('content')
 
 @endsection

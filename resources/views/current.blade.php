@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titleBlock')    @endsection
+@section('titleBlock')Список текущих заказов @endsection
 @section('content')
     <?php date_default_timezone_set('Europe/Moscow'); ?>
     <h1 class="h1" >  Список заказов </h1>

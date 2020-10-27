@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titleBlock')    @endsection
+@section('titleBlock')  Список заказов   @endsection
 @section('content')
     <?php date_default_timezone_set('Europe/Moscow'); ?>
 <h1 class="h1">Список заказов </h1>
@@ -8,6 +8,16 @@
 <a href="{{ 'new' }}" class="a"> новые </a>
 <a href="{{ 'ready' }}" class="a"> выполненные </a>
 {{ $items->links() }}
+
+    @if($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <table class="table">
     <thead>
     <tr>
@@ -15,7 +25,7 @@
         <th>Статус</th>
         <th>Название клиента</th>
         <th>Состав заказа (название, кол-во товаров)</th>
-        <th>Cost</th>
+        <th>Стоимость заказа</th>
     </tr>
     </thead>
     @foreach($items as $key => $value)

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+@section('titleBlock')  Погода в Брянске @endsection
     <table class="table">
         <thead>
         <tr>

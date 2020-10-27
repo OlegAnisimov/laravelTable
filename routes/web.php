@@ -16,8 +16,6 @@ Route::get('/', function () {
 });
 
 Route::view('/', 'welcome')->name('welcome');
-//Route::redirect('/welcome', '/');
-Route::view('/about', 'about')->name('about');
 //weather
 //Route::view('/weather', 'weather')->name('weather');
 Route::get('/weather', 'WeatherController@showWeather')->name('weather');
@@ -36,4 +34,7 @@ Route::get('/overdue', 'OrderController@overdue')->name('overdue');
 Route::get('/current', 'OrderController@current')->name('current');
 Route::get('/new', 'OrderController@new_orders')->name('new_orders');
 Route::get('/ready', 'OrderController@ready')->name('ready');
+
+// Email not work
+Route::get('/email','OrderController@send');
 
