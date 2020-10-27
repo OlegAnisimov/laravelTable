@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
     public function buyDetails()   {
         return $this->hasMany('App\Models\OrderProduct');
     }
@@ -16,11 +15,9 @@ class Order extends Model
             return $buyDetail->quantity * $buyDetail->price;
         });
     }
-
     public function productDetail () {
         return $this->hasMany('App\Models\OrderProduct');
     }
-//
     public function getProductId () {
         return $this->productDetail[0]['product_id'];
     }

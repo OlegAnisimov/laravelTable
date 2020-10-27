@@ -17,18 +17,13 @@ Route::get('/', function () {
 
 Route::view('/', 'welcome')->name('welcome');
 //weather
-//Route::view('/weather', 'weather')->name('weather');
 Route::get('/weather', 'WeatherController@showWeather')->name('weather');
-
 // view order instance
 Route::get('/orders/{key}', 'OrderController@seeOrder')->name('seeOrder');
-
 // edit order instance
 Route::get('/orders/{key}/edit', 'OrderController@editOrder')->name('editOrder');
-
 //orders with paginator
 Route::get('/orders', 'OrderController@showAllOrdersPaginator')->name('orders');
-
 // conditions views with paginator
 Route::get('/overdue', 'OrderController@overdue')->name('overdue');
 Route::get('/current', 'OrderController@current')->name('current');
